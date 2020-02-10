@@ -4,17 +4,18 @@ jobs:
     docker:
       - image: circleci/node:12.9.1-browsers
   
-    working_directory: ~/tech-lady/scotch-todo-app
-steps:
+    working_directory: ~/tech-lady/scotch-todo-app  
+
+    steps:
       - checkout
       
       - restore_cache:
         keys:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
-      
+            
       - run: yarn install
-   
+  
       - save_cache:
         paths:
           - node_modules
